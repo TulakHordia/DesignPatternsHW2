@@ -18,11 +18,12 @@ Design Patterns course:
 - Option 14 -> 1 for question 12.
 - Option 14 -> 2 to copy the 'HashMap' from question 12 to a 'HashSet' (Question 13).
 - Option 15 to add a new 'Question' to the 'HashSet'.
-
 > * [Object-Oriented Programming - Project / github.com/TulakHordia/OOPProject]
->   * Known Issues
-> * * * For the first part I have used the allQuestions list.
-> * * * Located in 'Manager' class, line 28, 124.
+
+
+> * [PART 1 USAGE INSTRUCTIONS]
+>	* INSTRUCTIONS
+> * * * For the first part I have used the allQuestions list, located in 'Manager' class, line '28', '124'.
 > * * * I used 'TreeMap' collection for sorting the 'allQuestions' with duplicates.
 > * * * For Q2 (Sub Question 13) I have used a 'HashSet' collection.
 > * * * I copied the 'HashMap' into 'HashSet' with the function copyToHashSet();
