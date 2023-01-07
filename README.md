@@ -32,17 +32,35 @@ Import/Export binary files, save to .txt files.
 - Option 14 -> 1 for question 12.
 - Option 14 -> 2 to copy the 'HashMap' from question 12 to a 'HashSet' (Question 13).
 - Option 15 to add a new 'Question' to the 'HashSet'.
+> * [Object-Oriented Programming - Project / github.com/TulakHordia/OOPProject]
 
-> * [Design Patterns course (Currently) - Project / github.com/TulakHordia/OOPProject]
->   * Known Issues
-> * * * For the first part I have used the allQuestions list, located in 'Manager' class, line 28, 124.
+
+> * [PART 1 USAGE INSTRUCTIONS]
+>	* INSTRUCTIONS
+> * * * For the first part I have used the allQuestions list, located in 'Manager' class, line '28', '124'.
 > * * * I used 'TreeMap' collection for sorting the 'allQuestions' with duplicates.
 > * * * For Q2 (Sub Question 13) I have used a 'HashSet' collection.
 > * * * I copied the 'HashMap' into 'HashSet' with the function copyToHashSet();
 > * * * Every new value you want to add to the 'HashSet' collection goes to addNewStringToHashSet() and then through StringComparator class
-to compare the new 'Question' with the 'HashSet' values by the String Length and if the letter 'a' shows up the same amount of times in both strings.
-'StringComparator.class' helps with that.
+> * * * to compare the new 'Question' with the 'HashSet' values by the String Length and if the letter 'a' shows up the same amount of times in both strings.
+> * * * 'StringComparator.class' helps with that.
 > * * * The 'HashSet" is then printed using the printHashSet() method.
+
+
+> * [PART 2 USAGE INSTRUCTIONS]
+>	* INSTRUCTIONS
+> * * * For part 2 we added 'MyArrayList', 'Observable', 'MyButton', 'MyLabel' classes and 'Observer' interface.
+
+>	* Question 17-18-19-20-21-22 usage:
+> * * * Launch the program, press '1' to import the premade questions, select '14' -> '15' -> '19' to copy the previous lists to the new 'MyArrayList'.
+> * * * Select '20' to print the newly made 'MyArrayList'.
+> * * * Select '21' to remove a question by the question ID.
+
+>	* Question 23-24-25 usage:
+> * * * To see how the 'Observer' design pattern works, Select '22' in the menu to Launch the UI.
+> * * * Press "Import from a premade questions list".
+> * * * Then on the bottom click "Create 'MyArrayList'", this will create all the previous lists and turn the 'Iterator' online
+> * * * The newly shown button will print 'MyArrayList' into the IDEs console.
 
 - Everything is located in 'manager.class' unless stated otherwise.
 
