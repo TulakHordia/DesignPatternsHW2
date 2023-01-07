@@ -17,7 +17,6 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.Map.Entry;
 
 
 import javax.swing.JOptionPane;
@@ -35,6 +34,8 @@ public class Manager {
 	//Collections.
 	public TreeSet<Question> treeSet = new TreeSet<Question>();
 	public List<Question> newArrayList = new ArrayList<Question>();
+	public HashSet<Question> newHashSet = new HashSet<Question>();
+	public LinkedHashSet<Question> newLinkedHashSet = new LinkedHashSet<Question>();
 	public MyArrayList newList = new MyArrayList();
 	private Vector<MainEventsListener> mainListener = new Vector<MainEventsListener>();
 	@SuppressWarnings("unused")
@@ -765,8 +766,8 @@ public class Manager {
 
 	public void questionsList() {
 		//General questions
-		String quest1 = "First question";
-		String quest2 = "Second question";
+		String quest1 = "First question z";
+		String quest2 = "Second question z";
 		String quest3 = "ThirdWithExtraSteps question";
 		String quest4 = "Fourth question";
 		String quest5 = "FifthWith question";
@@ -890,56 +891,42 @@ public class Manager {
 	}
 
 	public void printTreeSet() {
-		System.out.println("This is the sorted TreeSet collection: \n");
+		System.out.println("This is the sorted 'TreeSet' collection: \n");
 		Iterator<Question> entryIt = treeSet.iterator();
 		while (entryIt.hasNext()) {
 			System.out.println(entryIt.next());
 		}
 	}
 
-	public void copyTreeSetIntoNewArrayList() throws SQLException {
-		Collections.sort(newArrayList, new StringComparator());
-		if (treeSet.isEmpty()) {
-			System.out.println("'TreeSet' is empty, cannot copy empty Collection.");
-		}
-		else {
-			newArrayList.addAll(treeSet);
-			System.out.println("Copied 'TreeSet' to 'HashSet' successfully.");
-		}
-	}
-
-	public void printNewArrayList() {
-		if (newArrayList.isEmpty()) {
-			System.out.println("'TreeSet' is empty, cannot print an empty Collection.\n");
-		} else {
-			mainIterator = newArrayList.iterator();
-			while (mainIterator.hasNext()) {
-				System.out.println(mainIterator.next());
+	public void copyTreeSetIntoLinkedHashSet() {
+		for (Question q : treeSet) {
+			boolean exclude = false;
+			for (Question newQ : newLinkedHashSet) {
+				if (q.equals(newQ)) {
+					exclude = true;
+					break;
+				}
+			}
+			if (!exclude) {
+				newLinkedHashSet.add(q);
 			}
 		}
+		System.out.println("Copied 'TreeSet' into 'LinkedHashSet'.");
 	}
 
-	public void printNewArrayListAgain() {
-		if (newArrayList.isEmpty()) {
-			System.out.println("'TreeSet' is empty, cannot print an empty Collection.\n");
-		} else {
-			List<Question> hashSetList = new ArrayList<Question>(newArrayList);
-			Collections.sort(hashSetList, treeSet.comparator());
-			mainIterator = hashSetList.iterator();
-			while (mainIterator.hasNext()) {
-				System.out.println(mainIterator.next());
-			}
+	public void printLinkedHashSet() {
+		mainIterator = newLinkedHashSet.iterator();
+		while (mainIterator.hasNext()) {
+			System.out.println(mainIterator.next());
 		}
 	}
 
 	public void copyOldCollectionToNewArrayList() {
-		List<Question> hashSetList = new ArrayList<Question>(newArrayList);
-		Collections.sort(hashSetList, treeSet.comparator());
-		mainIterator = hashSetList.iterator();
+		mainIterator = newLinkedHashSet.iterator();
 		while (mainIterator.hasNext()) {
 			newList.add((Question) mainIterator.next());
 		}
-		System.out.println("Copied 'ArrayList' to 'MyArrayList' successfully.");
+		System.out.println("Copied 'LinkedHashSet' to 'MyArrayList' successfully.");
 		fireCreatedMyArrayListInManager(newList);
 	}
 
@@ -952,7 +939,6 @@ public class Manager {
 	public void printMyArrayList() {
 		Iterator<Question> newIterator = newList.iterator();
 		while (newIterator.hasNext()) {
-			//System.out.println("Updated Question Num in 'MyArrayList': " + newIterator.next().getQuestionNumber());
 			System.out.println(newIterator.next());
 		}
 	}
@@ -966,4 +952,6 @@ public class Manager {
 			}
 		}
 	}
+
+
 }

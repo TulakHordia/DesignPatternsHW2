@@ -31,10 +31,6 @@ public class MyLabel extends Label implements Observer {
         questUiListeners.add(listener);
     }
 
-    public void disableLabel() {
-        newLabel.setDisable(true);
-    }
-
     @Override
     public Node getStyleableNode() {
         return super.getStyleableNode();

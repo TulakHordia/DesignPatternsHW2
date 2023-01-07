@@ -248,7 +248,8 @@ public class Program extends Application implements ProgramMethods  {
 					break;
 
 				case 15:
-					manage.copyTreeSetIntoNewArrayList();
+					manage.copyTreeSetIntoLinkedHashSet();
+					//manage.copyTreeSetIntoNewArrayList();
 					break;
 
 				case 16:
@@ -256,25 +257,21 @@ public class Program extends Application implements ProgramMethods  {
 					break;
 
 				case 17:
-					manage.printNewArrayList();
+					manage.printLinkedHashSet();
 					break;
 
 				case 18:
-					manage.printNewArrayListAgain();
-					break;
-
-				case 19:
 					manage.copyOldCollectionToNewArrayList();
 					break;
-				case 20:
+				case 19:
 					manage.printMyArrayList();
 					break;
-				case 21:
+				case 20:
 					System.out.println("Please enter the question num you want to remove: ");
 					int theQuest = input.nextInt();
 					manage.removeQuestionFromMyArrayList(theQuest);
 					break;
-				case 22:
+				case 21:
 					System.out.println("Launching UI...");
 					return;
 
@@ -361,11 +358,13 @@ public class Program extends Application implements ProgramMethods  {
 		System.out.println("[12] - Import Pre-made 'questions list'.");
 		System.out.println("[13] - Save and exit program. (Saving to a binary file)");
 		System.out.println("---------------Collection Homework---------------");
+		System.out.println("--------------------Part 1-----------------------");
 		System.out.println("[14] - Copy and sort allQuestions (ArrayList) list to a Collection. (TreeSet)");
-		System.out.println("[15] - Copy and sort the previous Collection (TreeSet) to a new Collection. (ArrayList)");
+		System.out.println("[15] - Copy and sort the previous Collection (TreeSet) to a new Collection. (HashSet)");
 		System.out.println("[16] - Print TreeSet. (Created in option [15]).");
-		System.out.println("[17] - Print ArrayList. (Created in option [16]).");
-		System.out.println("[18] - Print a Sorted ArrayList. (Created in option [15] and [16]).");
+		System.out.println("[17] - Print HashSet. (Created in option [16]).");
+		System.out.println("[18] - Print a Sorted HashSet. (Created in option [15] and [16]).");
+		System.out.println("--------------------Part 2-----------------------");
 		System.out.println("[19] - Copy previous collection to 'MyArrayList' and print it.");
 		System.out.println("[20] - Print 'MyArrayList'.");
 		System.out.println("[21] - Remove a question from 'MyArrayList' by 'Question Number'.");

@@ -2,6 +2,7 @@ package Model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Question implements Serializable {
 	
@@ -29,14 +30,23 @@ public abstract class Question implements Serializable {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	
-	public String printQuestionNumber() {
-		return questionNumber + ")" + toString();
-	}
-	
+
 	@Override
 	public String toString() {
 		return question + "\n";
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Question question1 = (Question) o;
+
+		return this.getQuestion().contains("z") || this.getQuestion().length() == question1.getQuestion().length();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(questionNumber, question.hashCode());
+	}
 }

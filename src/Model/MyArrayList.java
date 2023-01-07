@@ -96,6 +96,5 @@ public class MyArrayList implements Observable, Iterable<Question> {
             Question tmp = newArray[cur++];
             return tmp;
         }
-
     }
 }
