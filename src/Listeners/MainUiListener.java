@@ -24,7 +24,7 @@ public interface MainUiListener {
 	void openExistingExamsWithLoadIntoTable(Stage parent);
 	void openExistingExamsWithoutLoadIntoTable(Stage parent);
 	void openManualExamCreationWindow(Stage parent);
-	void handleCloseButtonAction(MouseEvent event, Button closeButton);
+	void closeButtonAction(Button closeButton);
 	//Import/Export
 	void importFromBinaryFile(String fileName) throws FileNotFoundException, ClassNotFoundException, IOException;
 	void saveToFile(String text) throws IOException;
@@ -38,7 +38,7 @@ public interface MainUiListener {
 	void addAmericanQuestionToManualExamList(AmericanQ aQ);
 	void createManualExam() throws IOException;
 
-	void createMyArrayListQueFromUi(MyButton button, MyLabel label) throws SQLException;
+	void createMyArrayListQueFromUi(MyButton button, MyLabel label);
 
     void printMyArrayListFromUi();
 }

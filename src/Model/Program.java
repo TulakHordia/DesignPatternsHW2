@@ -263,25 +263,31 @@ public class Program extends Application implements ProgramMethods  {
 				case 18:
 					manage.copyOldCollectionToMyArrayList();
 					break;
+
 				case 19:
 					manage.printMyArrayList();
 					break;
+
 				case 20:
 					System.out.println("Please enter the question num you want to remove: ");
 					int theQuest = input.nextInt();
 					manage.removeQuestionFromMyArrayList(theQuest);
 					break;
+
 				case 21:
 					manage.copyOldCollectionToAnotherArrayList();
 					break;
+
 				case 22:
 					manage.printAnotherArrayList();
 					break;
+
 				case 23:
 					System.out.println("Please enter the question Number you want to remove: ");
 					int anotherQuest = input.nextInt();
 					manage.removeQuestionFromAnotherArrayList(anotherQuest);
 					break;
+
 				case 24:
 					System.out.println("Doing all 'MyArrayList' stuff.");
 					manage.copyArrayListToTreeSet();
@@ -292,6 +298,7 @@ public class Program extends Application implements ProgramMethods  {
 					int thirdQuest = input.nextInt();
 					manage.removeQuestionFromMyArrayList(thirdQuest);
 					break;
+
 				case 25:
 					System.out.println("Doing all 'ArrayList' stuff.");
 					if (manage.getLinkedHashSetSize() == 0) {
@@ -305,9 +312,11 @@ public class Program extends Application implements ProgramMethods  {
 					int fourthQuest = input.nextInt();
 					manage.removeQuestionFromAnotherArrayList(fourthQuest);
 					break;
+
 				case 26:
 					System.out.println("LAUNCHING UI...");
 					return;
+
 			default:
 				System.out.println("Invalid option, please choose again.");
 			}

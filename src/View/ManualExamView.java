@@ -206,16 +206,12 @@ public class ManualExamView implements UiElements, AbstractManualExamView {
 		Button closeWindow = new Button();
 		closeWindow.setText("Exit");
 		closeWindow.setMinSize(100, 50);
-		closeWindow.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				for (MainUiListener l : questUiListeners) {
-					l.handleCloseButtonAction(event, closeWindow);
-				}
+		closeWindow.setOnAction(e -> {
+			for (MainUiListener l : questUiListeners) {
+				l.closeButtonAction(closeWindow);
 			}
 		});
-		return closeWindow;	
+		return closeWindow;
 	}
 
 	@Override

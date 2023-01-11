@@ -32,15 +32,20 @@ public class MainController implements MainEventsListener, MainUiListener  {
 	private AbstractAutoExamView examView;
 	private AbstractExistingExams existingView;
 	private AbstractManualExamView manExamView;
-	private Observer observerView;
 	private MyArrayList myArrayList;
 	private MyButton myButton;
 	private MyLabel myLabel;
 	private Stage stage;
-	
+	private Command exitCommand;
+	private Command importCommand;
+	private Command createMyArrayListCommand;
+
 	public MainController(Manager model, AbstractMainView view) {
 		manModel = model;
 		questView = view;
+		this.exitCommand = new ExitCommand(this);
+		this.importCommand = new ImportCommand(this);
+		this.createMyArrayListCommand = new CreateMyArrayListCommand(this);
 
 		manModel.registerListener(this);
 		questView.registerListener(this);
@@ -98,17 +103,33 @@ public class MainController implements MainEventsListener, MainUiListener  {
 	public void addedAmericanQuestionToModelEventObject(AmericanQ question) {
 		questView.addAmericanQuestionToTableInUi(question);
 	}
-    
-    @Override
-    public void handleCloseButtonAction(MouseEvent event, Button closeButton)  {
-    	@SuppressWarnings("unused")
-		Stage newStage = new Stage();
-    	@SuppressWarnings("unused")
-		Node source = (Node) event.getSource();
-    	stage = (Stage) closeButton.getScene().getWindow();
-    	stage.close();
-    	Platform.exit();
-    }
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////// Design Patterns Homework //////////////////////////////////////
+	///////////////////////////////////Part 3 ////////////////////////////////////////////////
+	@Override
+	public void closeButtonAction(Button closeButton)  {
+		exitCommand = new ExitCommand(closeButton);
+		exitCommand.execute();
+	}
+
+	@Override
+	public void importPreMadeQuestionsList() {
+		importCommand = new ImportCommand(manModel);
+		importCommand.execute();
+	}
+
+	@Override
+	public void createMyArrayListQueFromUi(MyButton button, MyLabel label) {
+		myButton = button;
+		myLabel = label;
+		createMyArrayListCommand = new CreateMyArrayListCommand(manModel);
+		createMyArrayListCommand.execute();
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
 
 	@Override
 	public void addAmericanAnswerToAmericanQuestion(AmericanQ question, String answer, boolean isTrue) {
@@ -210,11 +231,6 @@ public class MainController implements MainEventsListener, MainUiListener  {
 		manModel.saveToBinaryFile(text);
 	}
 
-	@Override
-	public void importPreMadeQuestionsList() {
-		manModel.questionsList();
-		
-	}
 
 	@Override
 	public void addOpenQuestionToManualExamList(OpenQ oQ) {
@@ -253,14 +269,7 @@ public class MainController implements MainEventsListener, MainUiListener  {
 		questView.errorMessageUi("Saved all questions to questions.ser");
 	}
 
-	@Override
-	public void createMyArrayListQueFromUi(MyButton button, MyLabel label) throws SQLException {
-		myButton = button;
-		myLabel = label;
-		manModel.copyArrayListToTreeSet();
-		manModel.copyTreeSetIntoLinkedHashSet();
-		manModel.copyOldCollectionToMyArrayList();
-	}
+
 
 	@Override
 	public void createdMyArrayListInManager(MyArrayList newList) {

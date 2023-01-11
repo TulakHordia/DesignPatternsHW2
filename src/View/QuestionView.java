@@ -474,48 +474,51 @@ public class QuestionView extends GridPane implements UiElements, AbstractMainVi
 		});
 		return importFromBinaryButton;	
 	}
-	
-	public Button importPreMadeQuestions() {
-		Button importPreMade = new Button();
-		importPreMade.setText("Import from a Premade Questions list");
-		importPreMade.setPrefSize(250, 25);
-		importPreMade.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 
-			@Override
-			public void handle(MouseEvent event) {
-				for (MainUiListener l : questUiListeners) {
-					try {
-						l.importPreMadeQuestionsList();
-					} catch (Exception e) {
-						errorMessageUi(e.getMessage());
-					}
-				}
-			}
-		});
-		return importPreMade;	
-	}
+	//////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////// Design Patterns Homework //////////////////////////////////////
+	///////////////////////////////////Part 3 ////////////////////////////////////////////////
+
+public Button importPreMadeQuestions() {
+	Button importPreMade = new Button();
+	importPreMade.setText("Import from a Premade Questions list");
+	importPreMade.setPrefSize(250, 25);
+	importPreMade.setOnAction(e -> {
+		for (MainUiListener l : questUiListeners) {
+			l.importPreMadeQuestionsList();
+		}
+	});
+	return importPreMade;
+}
 
 	@Override
 	public Button saveAndExitOrReturn(Scene scene) {
 		Button closeWindow = new Button();
 		closeWindow.setText("Exit");
 		closeWindow.setMinSize(100, 50);
-		closeWindow.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				for (MainUiListener l : questUiListeners) {
-					l.handleCloseButtonAction(event, closeWindow);
-					try {
-						l.saveToBinaryFileOnExit();
-					} catch (IOException e) {
-						errorMessageUi(e.getMessage());
-					}
-				}
+		closeWindow.setOnAction(e -> {
+			for (MainUiListener l : questUiListeners) {
+				l.closeButtonAction(closeWindow);
 			}
 		});
-		return closeWindow;	
+		return closeWindow;
 	}
+
+	public Button createMyArrayList() {
+		Button arrayListButton = new Button();
+		arrayListButton.setText("Create 'MyArrayList'");
+		arrayListButton.setMinSize(130, 25);
+		arrayListButton.setOnAction(e -> {
+			for (MainUiListener l : questUiListeners) {
+				l.createMyArrayListQueFromUi(newButton, newLabel);
+			}
+		});
+		return arrayListButton;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
 	
 	public Button openAnswers() {
 		Button openAnswersWindow = new Button();
@@ -666,26 +669,6 @@ public class QuestionView extends GridPane implements UiElements, AbstractMainVi
 			}
 		});
 		return createManualExam;	
-	}
-
-	public Button createMyArrayList() {
-		Button arrayListButton = new Button();
-		arrayListButton.setText("Create 'MyArrayList'");
-		arrayListButton.setMinSize(130, 25);
-		arrayListButton.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				for (MainUiListener l : questUiListeners) {
-					try {
-						l.createMyArrayListQueFromUi(newButton, newLabel);
-					} catch (SQLException e) {
-						throw new RuntimeException(e);
-					}
-				}
-			}
-		});
-		return arrayListButton;
 	}
 
 	@Override

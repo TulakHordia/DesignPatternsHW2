@@ -881,7 +881,7 @@ public class Manager {
 	////////////////////////// Design Patterns Homework //////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 
-	public void copyArrayListToTreeSet() throws SQLException {
+	public void copyArrayListToTreeSet() {
 		treeSet = new TreeSet<Question>(new Comparator<Question>() {
 			@Override
 			public int compare(Question o1, Question o2) {
