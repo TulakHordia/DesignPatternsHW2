@@ -28,41 +28,45 @@ Import/Export binary files, save to .txt files.
 
 ## Usage
 - Run the program and use the built-in console in the IDE to traverse through the options.
-- For 'Design Patterns' course Part 1, use Option 14 & 15 in the menu.
-- Option 14 -> 1 for question 12.
-- Option 14 -> 2 to copy the 'HashMap' from question 12 to a 'HashSet' (Question 13).
-- Option 15 to add a new 'Question' to the 'HashSet'.
-> * [Object-Oriented Programming - Project / github.com/TulakHordia/OOPProject]
+- Type 1 to import a pre-made questions list, 2 to ignore it (it will import anyway at this point).
+- TYPE 3 TO OPEN THE UI.
+- For 'Design Patterns' course Part 1, use Options 14 to 17.
+- For 'Design Patterns' course Part 2, use Options 18 to 25.
 
+> * [Object-Oriented Programming - Project / github.com/TulakHordia/OOPProject]
 
 > * [PART 1 USAGE INSTRUCTIONS]
 >	* INSTRUCTIONS
-> * * * For the first part I have used the allQuestions list, located in 'Manager' class, line '28', '124'.
-> * * * I used 'TreeMap' collection for sorting the 'allQuestions' with duplicates.
-> * * * For Q2 (Sub Question 13) I have used a 'HashSet' collection.
-> * * * I copied the 'HashMap' into 'HashSet' with the function copyToHashSet();
-> * * * Every new value you want to add to the 'HashSet' collection goes to addNewStringToHashSet() and then through StringComparator class
-> * * * to compare the new 'Question' with the 'HashSet' values by the String Length and if the letter 'a' shows up the same amount of times in both strings.
-> * * * 'StringComparator.class' helps with that.
-> * * * The 'HashSet" is then printed using the printHashSet() method.
-
+> * * * Select [14] to copy and sort allQuestions (ArrayList) into a new collection (TreeSet).
+> * * * Select [15] to copy and sort the previous collection (TreeSet) into a new one (LinkedHashSet).
+> * * * Select [16] to print the TreeSet.
+> * * * Select [17] to print the LinkedHashSet.
 
 > * [PART 2 USAGE INSTRUCTIONS]
 >	* INSTRUCTIONS
-> * * * For part 2 we added 'MyArrayList', 'Observable', 'MyButton', 'MyLabel' classes and 'Observer' interface.
+> * * * Select [18] to copy the previous collection (LinkedHashSet) to 'MyArrayList' (question #17&18).
+> * * * Select [19] to print 'MyArrayList'. (question #19).
+> * * * Select [20] remove a question from 'MyArrayList'. (question #20).
+> * * * * * The remove basically shifts the whole array one step left, overriding the value we want to "Remove".
+> * * * * * It doesn't really "REMOVE" it, it overrides it completely and remove the last index (suppoused to be NULL after the shift).
+>
+> * * * Select [21] to copy the previous collection (LinkedHashSet) to a new one (ArrayList). (question #21).
+> * * * Select [22] to print the ArrayList. (question #21).
+> * * * Select [23] to remove a question from ArrayList. (question #21).
+>
+> * * * Options [18],[19],[20] are all located at: Line 933-963 in Manager.class, along with 'MyArrayList.class' that has the rest.
+> * * * Options [21],[22],[23] are all located at: Line 965-982 in Manager.class.
 
->	* Question 17-18-19-20-21-22 usage:
-> * * * Launch the program, press '1' to import the premade questions, select '14' -> '15' -> '19' to copy the previous lists to the new 'MyArrayList'.
-> * * * Select '20' to print the newly made 'MyArrayList'.
-> * * * Select '21' to remove a question by the question ID.
+> * * * Select [24] to have the whole process done for the 'MyArrayList' part (whole part 1 + [18],[19],[20]).
+> * * * Select [25] to do the same with ArrayList.
 
->	* Question 23-24-25 usage:
-> * * * To see how the 'Observer' design pattern works, Select '22' in the menu to Launch the UI.
-> * * * Press "Import from a premade questions list".
-> * * * Then on the bottom click "Create 'MyArrayList'", this will create all the previous lists and turn the 'Iterator' online
+> * * * TO LAUNCH THE UI EITHER SELECT OPTION [26] OR RESTART THE PROGRAM AND SELECT [3].
+
+>	* Question #23-24-25 usage (Observer Design Pattern):
+> * * * To see how the 'Observer' design pattern works, Select [26] in the menu to Launch the UI. OR Select option 3 when launching the whole Program.
+> * * * Press "Import from a premade questions list" button located in the middle of the UI.
+> * * * Then on the bottom click "Create 'MyArrayList'", this will create all the previous lists and turn the 'Iterator' online.
 > * * * The newly shown button will print 'MyArrayList' into the IDEs console.
-
-- Everything is located in 'manager.class' unless stated otherwise.
 
 ## Content
 Contains a way to add a new question + answer. (American or an Open one)
