@@ -306,9 +306,8 @@ public class Program extends Application implements ProgramMethods  {
 					manage.removeQuestionFromAnotherArrayList(fourthQuest);
 					break;
 				case 26:
-					System.out.println("Launching UI...");
+					System.out.println("LAUNCHING UI...");
 					return;
-
 			default:
 				System.out.println("Invalid option, please choose again.");
 			}
@@ -415,8 +414,7 @@ public class Program extends Application implements ProgramMethods  {
 		System.out.println("[23] - Remove a question from 'ArrayList' by 'Question Number'.");
 		System.out.println("[24] - See the whole process for 'MyArrayList'.");
 		System.out.println("[25] - See the whole process for 'ArrayList'.");
-		System.out.println("\n");
-		System.out.println("[26] - Launch Ui.");
+		System.out.println("[26] - Launch UI.");
 
 		System.out.println("\nEnter your choice: ");
 	}
