@@ -259,7 +259,7 @@ public class MainController implements MainEventsListener, MainUiListener  {
 		myLabel = label;
 		manModel.copyArrayListToTreeSet();
 		manModel.copyTreeSetIntoLinkedHashSet();
-		manModel.copyOldCollectionToNewArrayList();
+		manModel.copyOldCollectionToMyArrayList();
 	}
 
 	@Override

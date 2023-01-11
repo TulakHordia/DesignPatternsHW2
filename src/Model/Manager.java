@@ -37,6 +37,7 @@ public class Manager {
 	public HashSet<Question> newHashSet = new HashSet<Question>();
 	public LinkedHashSet<Question> newLinkedHashSet = new LinkedHashSet<Question>();
 	public MyArrayList newList = new MyArrayList();
+	public List<Question> anotherArrayList = new ArrayList<Question>();
 	private Vector<MainEventsListener> mainListener = new Vector<MainEventsListener>();
 	@SuppressWarnings("unused")
 	private int size;
@@ -181,6 +182,26 @@ public class Manager {
 	private Question getQuestionByIdFromNewList(int questionNumber) {
 		System.out.println(newList.get(questionNumber));
 		return newList.get(questionNumber);
+	}
+
+	private int getQuestionIdFromAnotherArrayList(Question theQuest) {
+		Iterator<Question> newIterator = anotherArrayList.iterator();
+
+		while (newIterator.hasNext()) {
+			if (newIterator.next() == theQuest) {
+				return newIterator.next().getQuestionNumber();
+			}
+		}
+		return 0;
+	}
+
+	private Question getQuestionByIdFromAnotherArrayList(int questionNumber) {
+		for (Question s : anotherArrayList) {
+			if (s.getQuestionNumber() == questionNumber) {
+				return s;
+			}
+		}
+	return null;
 	}
 
 	public String updateQuestion(int questionNumber, String question) {
@@ -873,19 +894,18 @@ public class Manager {
 	//////////////////////////////////////////////////////////////////////////////////////////
 
 	public void copyArrayListToTreeSet() throws SQLException {
-		treeSet = new TreeSet<Question>(Collections.reverseOrder(new Comparator<Question>() {
+		treeSet = new TreeSet<Question>(new Comparator<Question>() {
 			@Override
 			public int compare(Question o1, Question o2) {
-				if (o1.getQuestion().length() > o2.getQuestion().length()) {
-					return 1;
+				if (o1.getQuestion().length() >= o2.getQuestion().length()) {
+					return -1;
 				}
 				if (o1.getQuestion().length() < o2.getQuestion().length()) {
-					return -1;
-				} else {
-					return 0;
+					return 1;
 				}
+				return 0;
 			}
-		}));
+		});
 		treeSet.addAll(allQuestions);
 		System.out.println("Copied 'ArrayList' to 'TreeSet' successfully.");
 	}
@@ -899,18 +919,7 @@ public class Manager {
 	}
 
 	public void copyTreeSetIntoLinkedHashSet() {
-		for (Question q : treeSet) {
-			boolean exclude = false;
-			for (Question newQ : newLinkedHashSet) {
-				if (q.equals(newQ)) {
-					exclude = true;
-					break;
-				}
-			}
-			if (!exclude) {
-				newLinkedHashSet.add(q);
-			}
-		}
+		newLinkedHashSet.addAll(treeSet);
 		System.out.println("Copied 'TreeSet' into 'LinkedHashSet'.");
 	}
 
@@ -921,7 +930,7 @@ public class Manager {
 		}
 	}
 
-	public void copyOldCollectionToNewArrayList() {
+	public void copyOldCollectionToMyArrayList() {
 		mainIterator = newLinkedHashSet.iterator();
 		while (mainIterator.hasNext()) {
 			newList.add((Question) mainIterator.next());
@@ -953,5 +962,26 @@ public class Manager {
 		}
 	}
 
+	//ArrayList, HW2
+	public void copyOldCollectionToAnotherArrayList() {
+		anotherArrayList.addAll(newLinkedHashSet);
+		System.out.println("Copied 'LinkedHashSet' to 'ArrayList' successfully.");
+	}
 
+	public void printAnotherArrayList() {
+		Iterator<Question> newIterator = anotherArrayList.iterator();
+		while (newIterator.hasNext()) {
+			System.out.println(newIterator.next());
+		}
+	}
+
+	public void removeQuestionFromAnotherArrayList(int theQuest) {
+		Iterator<Question> iterator = anotherArrayList.iterator();
+		Question s = getQuestionByIdFromAnotherArrayList(theQuest);
+		anotherArrayList.remove(s);
+	}
+
+	int getLinkedHashSetSize() {
+		return newLinkedHashSet.size();
+	}
 }

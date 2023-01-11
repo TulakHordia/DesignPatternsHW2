@@ -79,9 +79,6 @@ public class MyArrayList implements Observable, Iterable<Question> {
 
         @Override
         public void remove() {
-            if (cur < 0 || cur >= index) {
-                throw new IllegalStateException("Invalid position for remove operation");
-            }
             for (int i = cur-1; i < index; i++) {
                 newArray[i] = newArray[i + 1];
             }

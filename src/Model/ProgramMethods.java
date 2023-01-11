@@ -10,5 +10,5 @@ interface ProgramMethods {
 	void menuOptions();
 	void mainMenu() throws IOException, ClassNotFoundException, SQLException;
 	void autoImportQuestions() throws ClassNotFoundException, IOException;
-	boolean importAndSaveQuestionsList() throws FileNotFoundException, IOException;
+	boolean importAndSaveQuestionsList(String[] args) throws FileNotFoundException, IOException;
 }

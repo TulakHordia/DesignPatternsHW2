@@ -261,7 +261,7 @@ public class Program extends Application implements ProgramMethods  {
 					break;
 
 				case 18:
-					manage.copyOldCollectionToNewArrayList();
+					manage.copyOldCollectionToMyArrayList();
 					break;
 				case 19:
 					manage.printMyArrayList();
@@ -272,6 +272,40 @@ public class Program extends Application implements ProgramMethods  {
 					manage.removeQuestionFromMyArrayList(theQuest);
 					break;
 				case 21:
+					manage.copyOldCollectionToAnotherArrayList();
+					break;
+				case 22:
+					manage.printAnotherArrayList();
+					break;
+				case 23:
+					System.out.println("Please enter the question Number you want to remove: ");
+					int anotherQuest = input.nextInt();
+					manage.removeQuestionFromAnotherArrayList(anotherQuest);
+					break;
+				case 24:
+					System.out.println("Doing all 'MyArrayList' stuff.");
+					manage.copyArrayListToTreeSet();
+					manage.copyTreeSetIntoLinkedHashSet();
+					manage.copyOldCollectionToMyArrayList();
+					manage.printMyArrayList();
+					System.out.println("Please enter the question num you want to remove: ");
+					int thirdQuest = input.nextInt();
+					manage.removeQuestionFromMyArrayList(thirdQuest);
+					break;
+				case 25:
+					System.out.println("Doing all 'ArrayList' stuff.");
+					if (manage.getLinkedHashSetSize() == 0) {
+						System.out.println("-----LinkedHashSet is empty!-----\n-----Doing all necessary work:-----\n");
+						manage.copyArrayListToTreeSet();
+						manage.copyTreeSetIntoLinkedHashSet();
+					}
+					manage.copyOldCollectionToAnotherArrayList();
+					manage.printAnotherArrayList();
+					System.out.println("Please enter the question Num you want to remove: ");
+					int fourthQuest = input.nextInt();
+					manage.removeQuestionFromAnotherArrayList(fourthQuest);
+					break;
+				case 26:
 					System.out.println("Launching UI...");
 					return;
 
@@ -299,7 +333,7 @@ public class Program extends Application implements ProgramMethods  {
 		Program p = new Program();
 		p.managingMethod();
 
-		if (!p.importAndSaveQuestionsList()) {
+		if (!p.importAndSaveQuestionsList(args)) {
 			p.autoImportQuestions();
 		}
 		p.mainMenu();
@@ -307,17 +341,26 @@ public class Program extends Application implements ProgramMethods  {
 		}
 	
 	@Override
-	public boolean importAndSaveQuestionsList() throws FileNotFoundException, IOException {
+	public boolean importAndSaveQuestionsList(String[] args) throws FileNotFoundException, IOException {
 		System.out.println("Would you like to import the pre-made 'questions list'? ");
 		System.out.println("Type 1 if yes, 2 if no.");
+		System.out.println("-----TYPE 3 TO OPEN THE UI-----");
 		int qChoice = manage.safeNextInt(input);
 		if (qChoice == 1) {
 			manage.questionsList();
 			return true;
 		}
-		else {
+		else if (qChoice == 2) {
 			return false;
 		}
+		else if (qChoice == 3) {
+			launch(args);
+		}
+		else {
+			System.out.println("NO CHOICE SELECT");
+			return false;
+		}
+		return false;
 	}
 
 	@Override
@@ -360,16 +403,20 @@ public class Program extends Application implements ProgramMethods  {
 		System.out.println("---------------Collection Homework---------------");
 		System.out.println("--------------------Part 1-----------------------");
 		System.out.println("[14] - Copy and sort allQuestions (ArrayList) list to a Collection. (TreeSet)");
-		System.out.println("[15] - Copy and sort the previous Collection (TreeSet) to a new Collection. (HashSet)");
-		System.out.println("[16] - Print TreeSet. (Created in option [15]).");
-		System.out.println("[17] - Print HashSet. (Created in option [16]).");
-		System.out.println("[18] - Print a Sorted HashSet. (Created in option [15] and [16]).");
+		System.out.println("[15] - Copy and sort the previous Collection (TreeSet) to a new Collection. (LinkedHashSet)");
+		System.out.println("[16] - Print TreeSet. (Created in option [14]).");
+		System.out.println("[17] - Print LinkedHashSet. (Created in option [15]).");
 		System.out.println("--------------------Part 2-----------------------");
-		System.out.println("[19] - Copy previous collection to 'MyArrayList' and print it.");
-		System.out.println("[20] - Print 'MyArrayList'.");
-		System.out.println("[21] - Remove a question from 'MyArrayList' by 'Question Number'.");
+		System.out.println("[18] - Copy previous collection (LinkedHashSet) to 'MyArrayList' and print it.");
+		System.out.println("[19] - Print 'MyArrayList'.");
+		System.out.println("[20] - Remove a question from 'MyArrayList' by 'Question Number'.");
+		System.out.println("[21] - Copy previous collection (LinkedHashSet) to 'ArrayList' and print it.");
+		System.out.println("[22] - Print 'ArrayList'.");
+		System.out.println("[23] - Remove a question from 'ArrayList' by 'Question Number'.");
+		System.out.println("[24] - See the whole process for 'MyArrayList'.");
+		System.out.println("[25] - See the whole process for 'ArrayList'.");
 		System.out.println("\n");
-		System.out.println("[22] - Launch Ui.");
+		System.out.println("[26] - Launch Ui.");
 
 		System.out.println("\nEnter your choice: ");
 	}
