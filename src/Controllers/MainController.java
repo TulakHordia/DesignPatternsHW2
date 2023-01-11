@@ -43,9 +43,6 @@ public class MainController implements MainEventsListener, MainUiListener  {
 	public MainController(Manager model, AbstractMainView view) {
 		manModel = model;
 		questView = view;
-		this.exitCommand = new ExitCommand(this);
-		this.importCommand = new ImportCommand(this);
-		this.createMyArrayListCommand = new CreateMyArrayListCommand(this);
 
 		manModel.registerListener(this);
 		questView.registerListener(this);
@@ -109,13 +106,13 @@ public class MainController implements MainEventsListener, MainUiListener  {
 	///////////////////////////////////Part 3 ////////////////////////////////////////////////
 	@Override
 	public void closeButtonAction(Button closeButton)  {
-		exitCommand = new ExitCommand(closeButton);
+		this.exitCommand = new ExitCommand(this, closeButton);
 		exitCommand.execute();
 	}
 
 	@Override
 	public void importPreMadeQuestionsList() {
-		importCommand = new ImportCommand(manModel);
+		this.importCommand = new ImportCommand(this, manModel);
 		importCommand.execute();
 	}
 
@@ -123,7 +120,7 @@ public class MainController implements MainEventsListener, MainUiListener  {
 	public void createMyArrayListQueFromUi(MyButton button, MyLabel label) {
 		myButton = button;
 		myLabel = label;
-		createMyArrayListCommand = new CreateMyArrayListCommand(manModel);
+		this.createMyArrayListCommand = new CreateMyArrayListCommand(this, manModel);
 		createMyArrayListCommand.execute();
 	}
 

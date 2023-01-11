@@ -13,23 +13,13 @@ public class ExitCommand implements Command {
     private Vector<MainUiListener> questUiListeners = new Vector<MainUiListener>();
     Button exitButton;
 
-    public ExitCommand(MainUiListener listener) {
+    public ExitCommand(MainUiListener listener, Button closeButton) {
         questUiListeners.add(listener);
-    }
-
-    public ExitCommand(Button closeButton) {
         this.exitButton = closeButton;
     }
 
     @Override
     public void execute() {
-        for (MainUiListener l : questUiListeners) {
-            try {
-                l.saveToBinaryFileOnExit();
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Failed to save.");
-            }
-        }
         Platform.exit();
     }
 }

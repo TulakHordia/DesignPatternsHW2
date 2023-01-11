@@ -9,11 +9,8 @@ public class ImportCommand implements Command {
     private Vector<MainUiListener> questUiListeners = new Vector<MainUiListener>();
     Manager newMan;
 
-    public ImportCommand(MainUiListener listener) {
+    public ImportCommand(MainUiListener listener, Manager manModel) {
         questUiListeners.add(listener);
-    }
-
-    public ImportCommand(Manager manModel) {
         this.newMan = manModel;
     }
 

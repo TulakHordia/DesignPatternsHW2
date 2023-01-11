@@ -10,11 +10,8 @@ public class CreateMyArrayListCommand implements Command {
     private Vector<MainUiListener> questUiListeners = new Vector<MainUiListener>();
     Manager newMan;
 
-    public CreateMyArrayListCommand(MainUiListener listener) {
+    public CreateMyArrayListCommand(MainUiListener listener, Manager manModel) {
         questUiListeners.add(listener);
-    }
-
-    public CreateMyArrayListCommand(Manager manModel) {
         this.newMan = manModel;
     }
 
