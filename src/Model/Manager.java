@@ -180,19 +180,7 @@ public class Manager {
 	}
 
 	private Question getQuestionByIdFromNewList(int questionNumber) {
-		System.out.println(newList.get(questionNumber));
 		return newList.get(questionNumber);
-	}
-
-	private int getQuestionIdFromAnotherArrayList(Question theQuest) {
-		Iterator<Question> newIterator = anotherArrayList.iterator();
-
-		while (newIterator.hasNext()) {
-			if (newIterator.next() == theQuest) {
-				return newIterator.next().getQuestionNumber();
-			}
-		}
-		return 0;
 	}
 
 	private Question getQuestionByIdFromAnotherArrayList(int questionNumber) {
@@ -957,6 +945,7 @@ public class Manager {
 		for (Iterator<Question> newIterator = newList.iterator(); newIterator.hasNext(); ) {
 			String itQuestion = newIterator.next().getQuestion();
 			if (itQuestion.equals(current.getQuestion())) {
+				System.out.println("Removed question: " + itQuestion);
 				newIterator.remove();
 			}
 		}
@@ -978,6 +967,7 @@ public class Manager {
 	public void removeQuestionFromAnotherArrayList(int theQuest) {
 		Iterator<Question> iterator = anotherArrayList.iterator();
 		Question s = getQuestionByIdFromAnotherArrayList(theQuest);
+		System.out.println("Removed question: " + s.getQuestion());
 		anotherArrayList.remove(s);
 	}
 
