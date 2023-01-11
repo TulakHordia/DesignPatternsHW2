@@ -8,9 +8,9 @@ ID: 319520425, 206946790
 * Part 3: GUI & MVC [Done]
 
 # Design Patterns course:
-* Part 1: Collections, Generics, Lambda Expressions, Iterator.
-* Part 2: ArrayList, Design Patterns: Iterator, Observer.
-* Part 3: Design Patterns: Command, Memento.
+* Part 1: Collections, Generics, Lambda Expressions, Iterator. [Done]
+* Part 2: ArrayList, Design Patterns: Iterator, Observer. [Done]
+* Part 3: Design Patterns: Command, Memento. [Done]
 
 * <https://github.com/TulakHordia>
 
