@@ -3,13 +3,11 @@ package Listeners;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLException;
 
 import Model.AmericanAnswers;
 import Model.AmericanQ;
 import Model.OpenQ;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public interface MainUiListener {

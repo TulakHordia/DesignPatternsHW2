@@ -13,7 +13,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -39,9 +38,11 @@ public class Manager {
 	public MyArrayList newList = new MyArrayList();
 	public List<Question> anotherArrayList = new ArrayList<Question>();
 	private Vector<MainEventsListener> mainListener = new Vector<MainEventsListener>();
+	Caretaker careTaker = new Caretaker();
 	@SuppressWarnings("unused")
 	private int size;
 	private int examNum;
+	private int removedQuestionsCount;
 	private Iterator mainIterator;
 	private SimpleStringProperty name;
 
@@ -112,15 +113,6 @@ public class Manager {
 		}
 	}
 
-	public void addAmericanAnswerToQuestion(AmericanQ question, String answer, boolean isTrue) {
-		AmericanAnswers aN = new AmericanAnswers(answer, isTrue);
-		System.out.println(question.addAnswer(aN));
-		fireAddAmericanAnswerToQuestion(question);
-	}
-
-
-
-
 	public Manager() {
 		allQuestions = new ArrayList<Question>();
 		manualExamArray = new ArrayList<Question>();
@@ -152,8 +144,6 @@ public class Manager {
 		}
 		OpenQ theQuestion = new OpenQ(question, answer);
 		allQuestions.add(theQuestion);
-
-
 		fireAddOpenQuestion(theQuestion);
 		System.out.println("Created question #" + (allQuestions.size()));
 		return true;
@@ -173,6 +163,12 @@ public class Manager {
 		fireAddAmericanQuestion(question);
 		System.out.println("Created question #" + (allQuestions.size()));
 		return true;
+	}
+
+	public void addAmericanAnswerToQuestion(AmericanQ question, String answer, boolean isTrue) {
+		AmericanAnswers aN = new AmericanAnswers(answer, isTrue);
+		System.out.println(question.addAnswer(aN));
+		fireAddAmericanAnswerToQuestion(question);
 	}
 
 	private Question getQuestionById(int questionNumber) {
@@ -969,6 +965,66 @@ public class Manager {
 		Question s = getQuestionByIdFromAnotherArrayList(theQuest);
 		System.out.println("Removed question: " + s.getQuestion());
 		anotherArrayList.remove(s);
+	}
+
+	//Memento, HW3
+	public void saveOpenQuestionsToMemento() {
+		for (Question l : allQuestions) {
+			if (l instanceof OpenQ) {
+				careTaker.saveMemento((OpenQ) l);
+			}
+		}
+	}
+
+	public void printSavedStates() {
+		System.out.println("Saved states in the careTaker: ");
+		for (int i = 0; i < careTaker.getCareTakerSize(); i++) {
+			Memento t = careTaker.get(i);
+			System.out.println("Questions: " + t.getOpenQ());
+		}
+	}
+
+	public void deleteAllOpenQuestionsFromAllQuestionsArray() {
+		Iterator<Question> iter = allQuestions.iterator();
+		while (iter.hasNext()) {
+			Question l = iter.next();
+			if (l instanceof OpenQ) {
+				iter.remove();
+				removedQuestionsCount++;
+			}
+		}
+		System.out.println("All Open Questions have been deleted successfully.");
+	}
+
+	public void restoreAllOpenQuestions() {
+		for (int i = 0; i < removedQuestionsCount; i++) {
+			allQuestions.add(careTaker.restoreQuestions(i));
+		}
+	}
+
+	public void showMultipleStatesOfTheSameQuestion() {
+		List<Memento> mementoList = new ArrayList<>();
+		OpenQ question1 = new OpenQ("What is the capital of France?", "Paris");
+		careTaker.saveMemento(question1);
+		Memento m1 = careTaker.getMemento();
+		mementoList.add(m1);
+
+		OpenQ question2 = new OpenQ("What is the capital of France?", "Marseille");
+		careTaker.saveMemento(question2);
+		Memento m2 = careTaker.getMemento();
+		mementoList.add(m2);
+
+		OpenQ question3 = new OpenQ("What is the capital of France?", "Lyon");
+		careTaker.saveMemento(question3);
+		Memento m3 = careTaker.getMemento();
+		mementoList.add(m3);
+
+		OpenQ question4 = new OpenQ("What is the capital of France?", "Jerusalem");
+		careTaker.saveMemento(question4);
+		Memento m4 = careTaker.getMemento();
+		mementoList.add(m4);
+
+		careTaker.printAllStates(mementoList);
 	}
 
 	int getLinkedHashSetSize() {

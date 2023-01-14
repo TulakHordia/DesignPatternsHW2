@@ -1,7 +1,6 @@
 package Model;
 
 import Listeners.MainUiListener;
-
 import java.util.Vector;
 
 public class ImportCommand implements Command {

@@ -1,8 +1,6 @@
 package Model;
 
 import Listeners.MainUiListener;
-
-import java.sql.SQLException;
 import java.util.Vector;
 
 public class CreateMyArrayListCommand implements Command {

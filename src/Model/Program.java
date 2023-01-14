@@ -317,6 +317,23 @@ public class Program extends Application implements ProgramMethods  {
 					System.out.println("LAUNCHING UI...");
 					return;
 
+				case 27:
+					manage.saveOpenQuestionsToMemento();
+					manage.printSavedStates();
+					break;
+
+				case 28:
+					manage.deleteAllOpenQuestionsFromAllQuestionsArray();
+					break;
+
+				case 29:
+					manage.restoreAllOpenQuestions();
+					break;
+
+				case 30:
+					manage.showMultipleStatesOfTheSameQuestion();
+					break;
+
 			default:
 				System.out.println("Invalid option, please choose again.");
 			}
@@ -424,6 +441,10 @@ public class Program extends Application implements ProgramMethods  {
 		System.out.println("[24] - See the whole process for 'MyArrayList'.");
 		System.out.println("[25] - See the whole process for 'ArrayList'.");
 		System.out.println("[26] - Launch UI.");
+		System.out.println("[27] - Save and print saved states.");
+		System.out.println("[28] - Delete all Open Questions.");
+		System.out.println("[29] - Restore the original Open Questions from saved states.");
+		System.out.println("[30] - Show multiple states of the same question at work.");
 
 		System.out.println("\nEnter your choice: ");
 	}
