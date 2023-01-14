@@ -8,7 +8,9 @@ ID: 319520425, 206946790
 * Part 3: GUI & MVC [Done]
 
 # Design Patterns course:
-* Part 1: Collections, Generics, Lambda Expressions, Iterator.
+* Part 1: Collections, Generics, Lambda Expressions, Iterator. [Done]
+* Part 2: ArrayList, Design Patterns: Iterator, Observer. [Done]
+* Part 3: Design Patterns: Command, Memento. [Done]
 
 * <https://github.com/TulakHordia>
 
@@ -67,6 +69,18 @@ Import/Export binary files, save to .txt files.
 > * * * Press "Import from a premade questions list" button located in the middle of the UI.
 > * * * Then on the bottom click "Create 'MyArrayList'", this will create all the previous lists and turn the 'Iterator' online.
 > * * * The newly shown button will print 'MyArrayList' into the IDEs console.
+
+> * [PART 3 USAGE INSTRUCTIONS]
+>	* INSTRUCTIONS
+> * * * Select option [3] on launch to open the UI.
+> * * * Question 26 (Command design pattern):
+> * * * The 'Exit','Import Premade Questions' and 'Create MyArrayList' buttons have all been changed to work with the Command design pattern.
+> * * * I have added the following classes:
+> - CreateMyArrayListCommand.class, ExitCommand.class, ImportCommand.class, along with 'Command' interface that holds the execute() command.
+> - The changes can be seen in 'QuestionView.class' class, lines 480-520.
+> - Along with 'MainController.class', lines 110-125.
+> * * * Question 27 (Memento design pattern):
+> * * * 
 
 ## Content
 Contains a way to add a new question + answer. (American or an Open one)
