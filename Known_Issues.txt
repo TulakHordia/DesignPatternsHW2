@@ -1,6 +1,6 @@
 # Object-Oriented Programming - Project.
-Creators Name: Benjamin Rain, Eli Levy
-ID: 319520425, 206946790
+Creators Name: Benjamin Rain
+ID: 319520425
 
 Object-Oriented Programming course:
 * Part 1: Hierarchy, Polymorphism, Object and Exceptions.
@@ -10,6 +10,7 @@ Object-Oriented Programming course:
 Design Patterns course:
 * Part 1: Collections, Generics, Lambda Expressions, Iterator.
 * Part 2: ArrayList, Design Pattern: Iterator, Observer.
+* Part 3: Design Patterns: Command, Memento.
 
 * <https://github.com/TulakHordia>
 
@@ -54,6 +55,16 @@ Design Patterns course:
 > * * * Press "Import from a premade questions list" button located in the middle of the UI.
 > * * * Then on the bottom click "Create 'MyArrayList'", this will create all the previous lists and turn the 'Iterator' online.
 > * * * The newly shown button will print 'MyArrayList' into the IDEs console.
+
+> * [PART 3 USAGE INSTRUCTIONS]
+>	* INSTRUCTIONS
+> * * * Select [27] to save and print the current Open Questions.
+> * * * Select [28] to delete all Open Questions from allQuestions. (You can use [1] > [1] to print all questions to see the differences)
+> * * * Select [29] to restore them back into allQuestions.
+> * * * Select [30] before doing the previous steps to see the different states of a singular question at work.
+
+> * * * A new 'Memento' and 'CareTaker' classes were made for Part 3.
+> * * * The whole Part 3 code resides in these classes & Manager class at lines 973-1032.
 
 ## Known-Bugs
 - None known.
