@@ -27,8 +27,7 @@ public class Caretaker {
     }
 
     public OpenQ restoreQuestions(int index) {
-        Memento m = mementoList.get(index);
-        OpenQ newOpenQuestion = new OpenQ(m.getQuestion(), m.getAnswer());
+        OpenQ newOpenQuestion = new OpenQ(memento.getOpenQList().get(index).getQuestion(), memento.getOpenQList().get(index).getAnswer());
         return newOpenQuestion;
     }
 

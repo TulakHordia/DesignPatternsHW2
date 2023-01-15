@@ -39,6 +39,8 @@ public class Manager {
 	public List<Question> anotherArrayList = new ArrayList<Question>();
 	private Vector<MainEventsListener> mainListener = new Vector<MainEventsListener>();
 	Caretaker careTaker = new Caretaker();
+	List<Memento> mementoList = new ArrayList<>();
+	List<Memento> savedStatesList = new ArrayList<>();
 	@SuppressWarnings("unused")
 	private int size;
 	private int examNum;
@@ -972,15 +974,17 @@ public class Manager {
 		for (Question l : allQuestions) {
 			if (l instanceof OpenQ) {
 				careTaker.saveMemento((OpenQ) l);
+				Memento m = careTaker.getMemento();
+				careTaker.add(m);
+				mementoList.add(m);
 			}
 		}
 	}
 
 	public void printSavedStates() {
 		System.out.println("Saved states in the careTaker: ");
-		for (int i = 0; i < careTaker.getCareTakerSize(); i++) {
-			Memento t = careTaker.get(i);
-			System.out.println("Questions: " + t.getOpenQ());
+		for (OpenQ l : careTaker.getMemento().getOpenQList()) {
+			System.out.println(l);
 		}
 	}
 
@@ -997,34 +1001,34 @@ public class Manager {
 	}
 
 	public void restoreAllOpenQuestions() {
+		System.out.println(removedQuestionsCount);
 		for (int i = 0; i < removedQuestionsCount; i++) {
 			allQuestions.add(careTaker.restoreQuestions(i));
 		}
 	}
 
 	public void showMultipleStatesOfTheSameQuestion() {
-		List<Memento> mementoList = new ArrayList<>();
 		OpenQ question1 = new OpenQ("What is the capital of France?", "Paris");
 		careTaker.saveMemento(question1);
 		Memento m1 = careTaker.getMemento();
-		mementoList.add(m1);
+		savedStatesList.add(m1);
 
 		OpenQ question2 = new OpenQ("What is the capital of France?", "Marseille");
 		careTaker.saveMemento(question2);
 		Memento m2 = careTaker.getMemento();
-		mementoList.add(m2);
+		savedStatesList.add(m2);
 
 		OpenQ question3 = new OpenQ("What is the capital of France?", "Lyon");
 		careTaker.saveMemento(question3);
 		Memento m3 = careTaker.getMemento();
-		mementoList.add(m3);
+		savedStatesList.add(m3);
 
 		OpenQ question4 = new OpenQ("What is the capital of France?", "Jerusalem");
 		careTaker.saveMemento(question4);
 		Memento m4 = careTaker.getMemento();
-		mementoList.add(m4);
+		savedStatesList.add(m4);
 
-		careTaker.printAllStates(mementoList);
+		careTaker.printAllStates(savedStatesList);
 	}
 
 	int getLinkedHashSetSize() {
