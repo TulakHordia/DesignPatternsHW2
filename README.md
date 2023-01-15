@@ -1,32 +1,18 @@
 # Object-Oriented Programming - Project.
-Creators Name: Benjamin Rain, Eli Levy
-ID: 319520425, 206946790
+Creators Name: Benjamin Rain
+ID: 319520425
 
-# Object-Oriented Programmg course:
-* Part 1: Hierarchy, Polymorphism, Object and Exceptions. [Done]
-* Part 2: Interfaces, files, generics [Done]
-* Part 3: GUI & MVC [Done]
+Object-Oriented Programming course:
+* Part 1: Hierarchy, Polymorphism, Object and Exceptions.
+* Part 2: Interfaces, files, generics
+* Part 3: GUI & MVC
 
-# Design Patterns course:
-* Part 1: Collections, Generics, Lambda Expressions, Iterator. [Done]
-* Part 2: ArrayList, Design Patterns: Iterator, Observer. [Done]
-* Part 3: Design Patterns: Command, Memento. [Done]
+Design Patterns course:
+* Part 1: Collections, Generics, Lambda Expressions, Iterator.
+* Part 2: ArrayList, Design Pattern: Iterator, Observer.
+* Part 3: Design Patterns: Command, Memento.
 
 * <https://github.com/TulakHordia>
-
-## Table of contents
-
-> * [Object-Oriented Programming - Project / github.com/TulakHordia/OOPProject]
->   * [Table of contents]
->   * [Usage]
->   * [Content]
->   * [For known issues please refer to the known_issues file]
-
-## About / Synopsis
-Whole project is complete.
-A program used to create, edit and manipulate questions.
-Create exams automatically or even manually and save them into a .txt file.
-Import/Export binary files, save to .txt files.
 
 ## Usage
 - Run the program and use the built-in console in the IDE to traverse through the options.
@@ -72,33 +58,19 @@ Import/Export binary files, save to .txt files.
 
 > * [PART 3 USAGE INSTRUCTIONS]
 >	* INSTRUCTIONS
-> * * * Select option [3] on launch to open the UI.
-> * * * Question 26 (Command design pattern):
-> * * * The 'Exit','Import Premade Questions' and 'Create MyArrayList' buttons have all been changed to work with the Command design pattern.
-> * * * I have added the following classes:
-> - CreateMyArrayListCommand.class, ExitCommand.class, ImportCommand.class, along with 'Command' interface that holds the execute() command.
-> - The changes can be seen in 'QuestionView.class' class, lines 480-520.
-> - Along with 'MainController.class', lines 110-125.
-> * * * Question 27 (Memento design pattern):
-> * * * 
+> * * * Select [27] to save and print the current Open Questions.
+> * * * Select [28] to delete all Open Questions from allQuestions. (You can use [1] > [1] to print all questions to see the differences)
+> * * * Select [29] to restore them back into allQuestions.
+> * * * Select [30] before doing the previous steps to see the different states of a singular question at work.
 
-## Content
-Contains a way to add a new question + answer. (American or an Open one)
-Double clicking the questions table will enter "edit mode" and allow you to edit the question (by pressing Enter when done).
-Can see the Answers for an american question in a separate window.
-Can import & export files in and out of the program.
-Can opt into creating an automatic exam with set amount of questions or a manual one by selecting them in the table.
-Functions to manually create an exam with the available questions or rather let the program create one for you.
+> * * * A new 'Memento' and 'CareTaker' classes were made for Part 3.
+> * * * The whole Part 3 code resides in these classes & Manager class at lines 973-1032.
 
-* Project consists of 4 Packages working in an MVC module.
-* Model, View, Controller and Listeners.
-* Listeners listen to changes in the View and Model classes and update the Controller accordingly.
-* View package consists of an Abstract interface for every GUI stage.
+## Known-Bugs
+- None known.
 
-## Work to be done
-Nothing, project is done, good luck to us. :)
+> * 
 
-### Thank you for using the program.
-### Best regards,
-### Benjamin Rain. :)
-
+Thank you,
+Best regards,
+Benjamin Rain.
